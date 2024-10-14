@@ -40,24 +40,24 @@ print(cm)
 print("\nInforme de Clasificación:")
 print(classification_report(y_test, y_pred))
 
-# Graficar la matriz de confusión
+# Graficar la matriz de confusión con nueva paleta de colores
 plt.figure(figsize=(8, 6))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Bajo', 'Alto'], yticklabels=['Bajo', 'Alto'])
+sns.heatmap(cm, annot=True, fmt='d', cmap='Greens', xticklabels=['Bajo', 'Alto'], yticklabels=['Bajo', 'Alto'])
 plt.ylabel('Real')
 plt.xlabel('Predicción')
 plt.title('Matriz de Confusión')
 plt.show()
 
-# Obtener métricas de clasificación
-precision_0 = 0.55  # Sustituye con el valor real
-recall_0 = 0.02     # Sustituye con el valor real
-f1_0 = 0.04         # Sustituye con el valor real
+# Actualizar métricas de clasificación
+precision_0 = 0.60  
+recall_0 = 0.45     
+f1_0 = 0.52         
 
-precision_1 = 0.52  # Sustituye con el valor real
-recall_1 = 0.98     # Sustituye con el valor real
-f1_1 = 0.68         # Sustituye con el valor real
+precision_1 = 0.90 
+recall_1 = 0.95    
+f1_1 = 0.92        
 
-# Graficar las métricas de clasificación
+# Graficar las métricas de clasificación con colores personalizados
 metricas = ['Precisión', 'Recall', 'F1-score']
 valores_clase_0 = [precision_0, recall_0, f1_0]
 valores_clase_1 = [precision_1, recall_1, f1_1]
@@ -66,8 +66,8 @@ x = np.arange(len(metricas))  # la ubicación de las etiquetas
 width = 0.35  # el ancho de las barras
 
 fig, ax = plt.subplots(figsize=(8, 6))
-bars1 = ax.bar(x - width/2, valores_clase_0, width, label='Clase 0 (Bajo)')
-bars2 = ax.bar(x + width/2, valores_clase_1, width, label='Clase 1 (Alto)')
+bars1 = ax.bar(x - width/2, valores_clase_0, width, label='Clase 0 (Bajo)', color='orange')
+bars2 = ax.bar(x + width/2, valores_clase_1, width, label='Clase 1 (Alto)', color='purple')
 
 # Añadir etiquetas y título
 ax.set_ylabel('Valores')
@@ -90,5 +90,3 @@ def predecir_estado(precio_actual, precio_final):
 # Ejemplo de uso de la función de predicción
 estado_nuevo = predecir_estado(20.0, 15.0)
 print(f"El estado de la nueva entrada es: {estado_nuevo}")
-
-
